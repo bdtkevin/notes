@@ -30,7 +30,7 @@ export default function Dashboard({ darkmode }) {
   const addNote = () => {
     const newNote = {
       userId: 1,
-      title: 'New note',
+      title: '',
       note: '',
     };
     axios.post('http://localhost:6060/api/notes/new', newNote).then(() => {
