@@ -58,6 +58,22 @@ const SHeader = styled.header`
       }
     }
   }
+
+  .button-darkmode {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      svg {
+        fill: #fec72d;
+      }
+    }
+  }
 `;
 
 export default SHeader;
