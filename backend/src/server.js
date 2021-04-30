@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const { db, port } = require('./config');
 
 db.connect((err) => {
@@ -11,11 +12,12 @@ db.connect((err) => {
 });
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/api/notes/:userId', (req, res) => {
   const userId = parseInt(req.params.userId, 10);
   db.query(
-    'SELECT id, title, note, date_created, date_modified FROM notes WHERE id_user = ?',
+    'SELECT id, title, note, date_created, date_modified FROM notes WHERE id_user = ? ORDER BY date_modified DESC',
     [userId],
     (err, results) => {
       if (!err) {
